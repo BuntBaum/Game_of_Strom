@@ -1,0 +1,13 @@
+allow_all_imports: true
+hass_is_global: true
+
+apps:
+
+  kostal_battery_control:
+    # App specific configurations
+
+
+logger:
+  default: warning
+  logs:
+    custom_components.pyscript.apps.kostal_battery_control: warning
