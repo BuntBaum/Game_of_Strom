@@ -1,0 +1,22 @@
+kostal_set_battery_min_soc:
+  alias: KOSTAL SET MIN SOC
+  description: Setzt den minimalen State of Charge des Heimspeichers
+  fields:
+    min_soc:
+      name: KOSTAL MIN SOC
+      description: Welchen SOC soll die Kostal Batterie mindestens enthalten?
+      required: true
+      default: 5
+      selector:
+        number:
+          min: 5
+          max: 100
+          step: 1
+          mode: slider
+  sequence:
+    - service: number.set_value
+      data:
+        value: "{{ min_soc }}"
+      target:
+        entity_id: number.scb_battery_min_soc
+  mode: single
