@@ -23,7 +23,7 @@ Game of Strom ist derzeit in der Entwicklung. Zunächst entsteht ein Prototyp f�
 - Nach Ablauf von 24 Stunden ist das Spiels beendet und man erfährt seine Performanz.
 - Man kann entweder selbst spielen oder einen via Reinforcement Learning optimierten KI-Agenten nutzen.
 
-## Steuerung des Heimspeicher
+## Steuerung Heimspeicher
 
 - Der Spieler kan den Heimspeicher bei günstigen Strompreisen befüllen und die Energie in teuren Phasen nutzen.
 - Dies muss zunächst im Wechselrichter freigeschaltet werden. Dann kann via Modbus die Be- und Entladeleistung angegeben werden.
@@ -36,7 +36,7 @@ Game of Strom ist derzeit in der Entwicklung. Zunächst entsteht ein Prototyp f�
 - Home Assistant: config/pyscript/config.yaml 
 - Home Assistant: config/pyscript/apps/kostal_battery_control/__init__.py
 
-## Steuerung E-Auto-Speicher
+## Steuerung Auto-Speicher
 todo
 
 ## Steuerung Warmwassererzeugung
@@ -45,9 +45,9 @@ todo
 ## Steuerung Raumheizung
 todo
 
-## Stromerzeugung, Strompreise und Stromkosten
+## Infos zu Stromerzeugung, Strompreise und Stromkosten
 todo
 
-## Wetterbeobachtungen und -Prognosen
+## Infos zu Wetterbeobachtungen und -Prognosen
 todo
 
