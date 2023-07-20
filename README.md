@@ -20,9 +20,10 @@ Das Ziel ist es die Stromkosten eines Haushaltes zu minimieren und gleichzeitig 
 - Nach Ablauf von 24 Stunden ist das Spiels beendet und man erfährt seine Performanz.
 - Man kann entweder selbst spielen oder einen via Reinforcement Learning optimierten KI-Agenten nutzen.
 
-## Externes Batteriemanagement
+## Heimspeicher
 
-- Der Wechselrichter erlaubt es die Steuerung des Heimspeichers selbst zu übernehmen. Dies muss zunächst freigeschaltet werden. Dann kann via Modbus die Be- und Entladeleistung angegeben werden.
+- Der Spieler kan den Heimspeicher bei günstigen Strompreisen befüllen und die Energie in teuren Phasen nutzen.
+- Dies muss zunächst im Wechselrichter freigeschaltet werden. Dann kann via Modbus die Be- und Entladeleistung angegeben werden.
 - Sobald das erste Modbus-Steuersignale gesendet werden, wird das externe Batteriemanagement aktiv. Es wechselt dann nicht mehr in den internen Modus zurück. Dieser wird erst nach einem Neustart des Wechselrichters wieder aktiv.
 - Die externe Batteriesteuerung wird bei Game of Strom über eine Pyscript App (Python) durchgeführt. Pyscript ist eine Community Integration für Home Assistant. Siehe https://github.com/custom-components/pyscript
 - Die externe Steuerung greift auf Sensor-Werte des Wechselrichters zurück. Diese werden per Kostal Plenticore Integration in Home Assostant verfügbar. Siehe https://www.home-assistant.io/integrations/kostal_plenticore/
@@ -31,4 +32,4 @@ Das Ziel ist es die Stromkosten eines Haushaltes zu minimieren und gleichzeitig 
 - Home Assistant: config/pyscript/config.yaml 
 - Home Assistant: config/pyscript/apps/kostal_battery_control/__init__.py
 
-## todo: weitere Komponenten: Preise, Wetter, Steuerungen
+## todo: weitere Komponenten: Preise, Wetter, Steuerungen...
