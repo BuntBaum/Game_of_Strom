@@ -36,6 +36,8 @@ Game of Strom ist derzeit in der Entwicklung. Zunächst entsteht ein Prototyp f�
 - Home Assistant: config/pyscript/config.yaml 
 - Home Assistant: config/pyscript/apps/kostal_battery_control/__init__.py
 
+Die Pyscript App sorgt zunächst nur dafür, dass sich das externe Management etwa so verhält wie das interne Management des Wechselrichters. Jedoch hat man nun die Möglichkeit über das Setzen des minimalen SOC den Speicher auch aus dem Netz zu beladen. Hierzu wird künftig über Game of Strom auch eine komfortable Steuerungsmöglichkeit bereitgestellt. Bis dahin kann man die Kostal Weboberfläche nutzen. 
+
 ## Steuerung Auto-Speicher
 todo
 
