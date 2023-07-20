@@ -1,4 +1,4 @@
-# Game_of_Strom (work in progress)
+# Game of Strom (work in progress)
 
 ## Spielziel
 Das Ziel ist es die Stromkosten eines Haushaltes zu minimieren und gleichzeitig den Komfort auf dem benötigten Niveau zu halten. Je besser man dies erreicht umso mehr Punkte erhält man zur Belohnung.
