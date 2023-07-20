@@ -17,7 +17,7 @@ Game of Strom ist derzeit in der Entwicklung. Zun채chst entsteht ein Prototyp f�
 
 ## Ablauf
 - Der Spieler erh채lt Grafiken und sieht alle relevanten Daten via Home Assistant.
-- Dies umfasst etwa Strompreise, Wetter-Beobachtungen und -Prognosen, Stromerzeugung via PV, Energie im Speicher und Auto und Temperaturen.
+- Dies umfasst etwa Strompreise, Wetter-Beobachtungen und -Prognosen, Stromerzeugung via PV, Energie im Speicher und im Auto sowie Temperaturen.
 - Man kann sich entscheiden das Auto zu laden, den Speicher zu bef체llen oder zu nutzen, Warmwasser zu erzeugen sowie die Heizung hoch- oder runterzudrehen.
 - Die Aktionen werden ausgef체hrt und man erh채lt kurze Zeit sp채ter die neue Situation und die zuletzt erzielten Punkte.
 - Nach Ablauf von 24 Stunden ist das Spiels beendet und man erf채hrt seine Performanz.
@@ -29,7 +29,7 @@ Game of Strom ist derzeit in der Entwicklung. Zun채chst entsteht ein Prototyp f�
 - Dies muss zun채chst im Wechselrichter freigeschaltet werden. Dann kann via Modbus die Be- und Entladeleistung angegeben werden.
 - Sobald das erste Modbus-Steuersignale gesendet werden, wird das externe Batteriemanagement aktiv. Es wechselt dann nicht mehr in den internen Modus zur체ck. Dieser wird erst nach einem Neustart des Wechselrichters wieder aktiv.
 - Die externe Batteriesteuerung wird bei Game of Strom 체ber eine Pyscript App (Python) durchgef체hrt. Pyscript ist eine Community Integration f체r Home Assistant. Siehe https://github.com/custom-components/pyscript
-- Die externe Steuerung greift auf Sensor-Werte des Wechselrichters zur체ck. Diese werden per Kostal Plenticore Integration in Home Assostant verf체gbar. Siehe https://www.home-assistant.io/integrations/kostal_plenticore/
+- Die externe Steuerung greift auf Sensor-Werte des Wechselrichters zur체ck. Diese werden per Kostal Plenticore Integration in Home Assistant verf체gbar. Siehe https://www.home-assistant.io/integrations/kostal_plenticore/
   
 - Zur Installation der Pyscript App kann man auf die im Game of Strom hinterlegten Dateien zur체ckgreifen. Diese m체ssen wie folgt in Home Assistant angelegt werden:  
 - Home Assistant: config/configuration.yaml
