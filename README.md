@@ -14,7 +14,8 @@ Das Ziel ist es die Stromkosten eines Haushaltes zu minimieren und gleichzeitig 
 - Smart Home Server (Home Assistant)
 
 ## Ablauf
-- Der Spieler erhält Grafiken und sieht alle relevanten Daten. Dies umfasst etwa Strompreise, Wetter-Beobachtungen und -Prognosen, Stromerzeugung via PV, Energie im Speicher und Auto und Temperaturen.
+- Der Spieler erhält Grafiken und sieht alle relevanten Daten via Home Assistant.
+- Dies umfasst etwa Strompreise, Wetter-Beobachtungen und -Prognosen, Stromerzeugung via PV, Energie im Speicher und Auto und Temperaturen.
 - Man kann sich entscheiden das Auto zu laden, den Speicher zu befüllen oder zu nutzen, Warmwasser zu erzeugen sowie die Heizung hoch- oder runterzudrehen.
 - Die Aktionen werden ausgeführt und man erhält kurze Zeit später die neue Situation und die zuletzt erzielten Punkte.
 - Nach Ablauf von 24 Stunden ist das Spiels beendet und man erfährt seine Performanz.
