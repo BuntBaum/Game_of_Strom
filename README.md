@@ -4,13 +4,15 @@
 Das Ziel ist es die Stromkosten eines Haushaltes zu minimieren und gleichzeitig den Komfort auf dem benötigten Niveau zu halten. Je besser man dies erreicht umso mehr Punkte erhält man zur Belohnung.
 
 ## Spielelemente
+Game of Strom ist derzeit in der Entwicklung. Zunächst entsteht ein Prototyp für einen spezifischen Haushalt mit folgender Ausgangslage:
 
-- Dynamischer Strompreis (Tibber)
+- Dynamischer stündlicher Strompreis (Tibber)
 - PV-Anlage (7,2 kWp)
 - Heimspeicher (BYD, 5kWh)
 - Wechselrichter (Kostal Plenticore)
 - Elektroauto (Zoe, 50kWh)
-- Wärmepumpe (Stiebel Eltron, 5kW)
+- Wärmepumpe für Raumheizung und Warmwasser (Stiebel Eltron, 5kW)
+- intelligente Heizkörperregler (Fritz Dect 301)
 - Smart Home Server (Home Assistant)
 
 ## Ablauf
@@ -28,6 +30,7 @@ Das Ziel ist es die Stromkosten eines Haushaltes zu minimieren und gleichzeitig 
 - Sobald das erste Modbus-Steuersignale gesendet werden, wird das externe Batteriemanagement aktiv. Es wechselt dann nicht mehr in den internen Modus zurück. Dieser wird erst nach einem Neustart des Wechselrichters wieder aktiv.
 - Die externe Batteriesteuerung wird bei Game of Strom über eine Pyscript App (Python) durchgeführt. Pyscript ist eine Community Integration für Home Assistant. Siehe https://github.com/custom-components/pyscript
 - Die externe Steuerung greift auf Sensor-Werte des Wechselrichters zurück. Diese werden per Kostal Plenticore Integration in Home Assostant verfügbar. Siehe https://www.home-assistant.io/integrations/kostal_plenticore/
+  
 - Zur Installation der Pyscript App kann man auf die im Game of Strom hinterlegten Dateien zurückgreifen. Diese müssen wie folgt in Home Assistant angelegt werden:  
 - Home Assistant: config/configuration.yaml
 - Home Assistant: config/pyscript/config.yaml 
