@@ -1,5 +1,8 @@
 # Game of Strom (work in progress)
 
+## Idee
+Game of Strom kombiniert die typischen Funktionen einer Energy Management Software (https://en.wikipedia.org/wiki/Energy_management_software) mit spielerischen Elementen. Es ermöglicht sowohl eine Anwendung durch einen Menschen als auch den Einsatz von KI-Technologien zur autonomen und möglichst optimalen Steuerung durch einen Agenten.
+
 ## Spielziel
 Das Ziel ist es die Stromkosten eines Haushaltes zu minimieren und gleichzeitig den Komfort auf dem benötigten Niveau zu halten. Je besser man dies erreicht umso mehr Punkte erhält man zur Belohnung.
 
