@@ -3,6 +3,11 @@
 ## Konzept
 "Game of Strom" ist eine innovative Plattform, die die typischen Merkmale einer [Energiemanagement-Software](https://en.wikipedia.org/wiki/Energy_management_software) mit spielerischen Aspekten kombiniert. Die Anwendung ermöglicht die direkte Interaktion durch den Benutzer oder den Einsatz von KI-Technologien für eine autonome und optimale Steuerung mittels [Reinforcement Learning](https://en.wikipedia.org/wiki/Reinforcement_learning).
 
+Beispielsweise erfolgt die Steuerung des Batteriespeichers für das Haus derzeit über dieses Dashboard:
+![image](https://github.com/BuntBaum/Game_of_Strom/assets/140110546/1c424dab-0ede-4bea-b3f3-9e57608aa48e)
+Oben kann der minimale Ladezustand der Batterie als `Action` gesetzt werden. Darunter befinden sich verschiedene `States` welche helfen die geeignete Actions zu wählen.
+
+
 ## Spielziel
 Das primäre Ziel des Spiels ist es, die Stromkosten eines Haushalts zu minimieren, während der Wohnkomfort auf dem gewünschten Niveau gehalten wird. Je effizienter die Energieverwaltung, desto mehr Punkte erhält der Spieler.
 
