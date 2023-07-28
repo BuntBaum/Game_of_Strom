@@ -5,7 +5,7 @@
 
 Beispielsweise erfolgt die Steuerung des Batteriespeichers für das Haus derzeit über dieses Dashboard:
 ![image](https://github.com/BuntBaum/Game_of_Strom/assets/140110546/1c424dab-0ede-4bea-b3f3-9e57608aa48e)
-Oben kann der minimale Ladezustand der Batterie als `Action` gesetzt werden. Darunter befinden sich verschiedene `States` welche helfen die geeignete Actions zu wählen.
+Oben kann der minimale Ladezustand der Batterie als `Action` gesetzt werden. Darunter befinden sich verschiedene `States` welche wichtige Systemzustände darstellen und dem Spieler dabei helfen geeignete Aktionen zu wählen.
 
 
 ## Spielziel
