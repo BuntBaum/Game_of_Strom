@@ -1,59 +1,60 @@
-# Game of Strom (work in progress)
+# Game of Strom
 
-## Idee
-Game of Strom kombiniert die typischen Funktionen einer Energy Management Software (https://en.wikipedia.org/wiki/Energy_management_software) mit spielerischen Elementen. Es ermöglicht sowohl eine Anwendung durch einen Menschen als auch den Einsatz von KI-Technologien zur autonomen und möglichst optimalen Steuerung durch einen Agenten.
+## Konzept
+"Game of Strom" ist eine innovative Plattform, die die typischen Merkmale einer [Energiemanagement-Software](https://en.wikipedia.org/wiki/Energy_management_software) mit spielerischen Aspekten kombiniert. Die Anwendung ermöglicht die direkte Interaktion durch den Benutzer oder den Einsatz von KI-Technologien für eine autonome und optimale Steuerung mittels [Reinforcement Learning](https://en.wikipedia.org/wiki/Reinforcement_learning).
 
 ## Spielziel
-Das Ziel ist es die Stromkosten eines Haushaltes zu minimieren und gleichzeitig den Komfort auf dem benötigten Niveau zu halten. Je besser man dies erreicht umso mehr Punkte erhält man zur Belohnung.
+Das primäre Ziel des Spiels ist es, die Stromkosten eines Haushaltes zu minimieren, während der Wohnkomfort auf dem gewünschten Niveau gehalten wird. Je effizienter die Energieverwaltung, desto mehr Punkte erhält der Spieler.
 
 ## Spielelemente
-Game of Strom ist derzeit in der Entwicklung. Zunächst entsteht ein Prototyp für einen spezifischen Haushalt mit folgender Ausgangslage:
+Game of Strom ist derzeit in Entwicklung. Der erste Prototyp wird auf einen Haushalt zugeschnitten sein, der folgende Elemente enthält:
 
-- Dynamischer stündlicher Strompreis (Tibber)
+- Dynamische stündliche Strompreise ([Tibber](https://tibber.com/en))
 - PV-Anlage (7,2 kWp)
 - Heimspeicher (BYD, 5kWh)
-- Wechselrichter (Kostal Plenticore)
-- Elektroauto (Zoe, 50kWh)
-- Wärmepumpe für Raumheizung und Warmwasser (Stiebel Eltron, 5kW)
-- intelligente Heizkörperregler (Fritz Dect 301)
-- Smart Home Server (Home Assistant)
+- Wechselrichter ([PLENTICORE plus 7.0](https://www.kostal-solar-electric.com/de-de/produkte/hybrid-wechselrichter/plenticore-plus/))
+- Elektroauto (Renault Zoe R110 Z.E. 50 (52 kWh))
+- Wallbox (GO-E Charger, 11kw)
+- Wärmepumpe für Raumheizung und Warmwasser ([Stiebel Eltron, 5kW](https://www.stiebel-eltron.de/de/home/produkte-loesungen/erneuerbare_energien/waermepumpe/luft-wasser-waermepumpen/wpl-a-05-07-hk-premium/wpl-a-05-hk-230-premium.html))
+- Intelligente Heizkörperregler ([Fritz Dect 301](https://avm.de/produkte/smart-home/fritzdect-301/))
+- Smart Home Server ([Home Assistant](https://www.home-assistant.io/))
 
-## Ablauf
-- Der Spieler erhält Grafiken und sieht alle relevanten Daten via Home Assistant.
-- Dies umfasst etwa Strompreise, Wetter-Beobachtungen und -Prognosen, Stromerzeugung via PV, Energie im Speicher und im Auto sowie Temperaturen.
-- Man kann sich entscheiden das Auto zu laden, den Speicher zu befüllen oder zu nutzen, Warmwasser zu erzeugen sowie die Heizung hoch- oder runterzudrehen.
-- Die Aktionen werden ausgeführt und man erhält kurze Zeit später die neue Situation und die zuletzt erzielten Punkte.
-- Nach Ablauf von 24 Stunden ist das Spiels beendet und man erfährt seine Performanz.
-- Man kann entweder selbst spielen oder einen via Reinforcement Learning optimierten KI-Agenten nutzen.
+## Spielablauf
+- Der Spieler erhält Übersichtsgrafiken und Zugriff auf alle relevanten Daten über Home Assistant.
+- Diese Daten beinhalten Informationen zu Strompreisen, Wetterdaten und -vorhersagen, Stromerzeugung durch PV, Energie in Speicher und Auto sowie Temperaturdaten.
+- Der Spieler kann Entscheidungen treffen, z.B. das Auto zu laden, den Speicher zu füllen oder zu entleeren, Warmwasser zu erzeugen oder die Heizung hoch- oder runterzuregeln.
+- Die getroffenen Entscheidungen werden ausgeführt und der Spieler erhält kurze Zeit später die aktualisierte Situation und die zuletzt erzielten Punkte.
+- Nach 24 Stunden endet das Spiel und der Spieler erhält eine Bewertung seiner Leistung.
+- Es besteht die Möglichkeit, selbst zu spielen oder einen durch Reinforcement Learning optimierten KI-Agenten einzusetzen.
 
-## Steuerung Heimspeicher
+## Steuerung des Heimspeichers
 
-- Der Spieler kan den Heimspeicher bei günstigen Strompreisen befüllen und die Energie in teuren Phasen nutzen.
-- Dies muss zunächst im Wechselrichter freigeschaltet werden. Dann kann via Modbus die Be- und Entladeleistung angegeben werden.
-- Sobald das erste Modbus-Steuersignale gesendet werden, wird das externe Batteriemanagement aktiv. Es wechselt dann nicht mehr in den internen Modus zurück. Dieser wird erst nach einem Neustart des Wechselrichters wieder aktiv.
-- Die externe Batteriesteuerung wird bei Game of Strom über eine Pyscript App (Python) durchgeführt. Pyscript ist eine Community Integration für Home Assistant. Siehe https://github.com/custom-components/pyscript
-- Die externe Steuerung greift auf Sensor-Werte des Wechselrichters zurück. Diese werden per Kostal Plenticore Integration in Home Assistant verfügbar. Siehe https://www.home-assistant.io/integrations/kostal_plenticore/
+- Bei niedrigen Strompreisen kann der Spieler den Heimspeicher laden und die gespeicherte Energie zu Zeiten höherer Preise nutzen.
+- Dies muss zuerst im Wechselrichter aktiviert werden. Über Modbus kann dann die Lade- und Entladeleistung festgelegt werden.
+- Sobald das erste Modbus-Steuersignal gesendet wird, wird das externe Batteriemanagement aktiviert. Es wechselt danach nicht mehr zurück in den internen Modus, der erst nach einem Neustart des Wechselrichters wieder aktiviert wird.
+- Die externe Batteriesteuerung wird in Game of Strom durch eine [Pyscript App (Python)](https://github.com/custom-components/pyscript) ausgeführt, eine Community Integration für Home Assistant.
+- Die externe Steuerung nutzt Sensorwerte des Wechselrichters, die durch die [Kostal Plenticore Integration](https://www.home-assistant.io/integrations/kostal_plenticore/) in Home Assistant verfügbar gemacht werden.
   
-- Zur Installation der Pyscript App kann man auf die im Game of Strom hinterlegten Dateien zurückgreifen. Diese müssen wie folgt in Home Assistant angelegt werden:  
-- Home Assistant: config/configuration.yaml
-- Home Assistant: config/pyscript/config.yaml 
-- Home Assistant: config/pyscript/apps/kostal_battery_control/__init__.py
+- Für die Installation der Pyscript App können Sie die in Game of Strom bereitgestellten Dateien verwenden. Diese müssen wie folgt in Home Assistant angelegt werden:  
+    - Home Assistant: `config/configuration.yaml`
+    - Home Assistant: `config/pyscript/config.yaml `
+    - Home Assistant: `config/pyscript/apps/kostal_battery_control/__init__.py`
 
-Die Pyscript App sorgt zunächst nur dafür, dass sich das externe Management etwa so verhält wie das interne Management des Wechselrichters. Jedoch hat man nun die Möglichkeit über das Setzen des minimalen SOC den Speicher auch aus dem Netz zu beladen. Hierzu wird künftig über Game of Strom auch eine komfortable Steuerungsmöglichkeit bereitgestellt. Bis dahin kann man die Funktion kostal_set_battery_min_soc in Home Assistant nutzen, welche hier definiert ist: Home Assistant/scripts/kostal_control.yaml
+Die Pyscript App sorgt dafür, dass das externe Management zunächst ähnlich funktioniert wie das interne Management des Wechselrichters. Mit der zusätzlichen Möglichkeit, den Speicher auch aus dem Netz zu laden, indem der minimale SOC gesetzt wird. 
 
+Eine benutzerfreundliche Steuerung wird künftig über Game of Strom bereitgestellt. Bis dahin können Sie die Funktion `kostal_set_battery_min_soc` in Home Assistant nutzen, die hier definiert ist: `Home Assistant/scripts/kostal_control.yaml`
 
 ## Steuerung Auto-Speicher
-todo
+In Arbeit
 
 ## Steuerung Warmwassererzeugung
-todo
+In Arbeit
 
 ## Steuerung Raumheizung
-todo
+In Arbeit
 
-## Infos zu Stromerzeugung, Strompreise und Stromkosten
-todo
+## Informationen zu Stromerzeugung, Strompreisen und Stromkosten
+In Arbeit
 
-## Infos zu Wetterbeobachtungen und -Prognosen
-todo
-
+## Informationen zu Wetterbeobachtungen und -Prognosen
+In Arbeit
