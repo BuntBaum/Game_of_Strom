@@ -1,0 +1,671 @@
+modbus:
+  ##########################################################
+  # Stiebel ISG
+  - name: isg
+    type: tcp
+    host: 192.168.178.57
+    port: 502
+    ##########################################################
+
+    sensors:
+      # Modbus-Systemwerte für Wärmepumpen mit WPM
+
+      # Block 1: Systemwerte (Read Input Register)
+      - name: ISG ISTTEMPERATUR FE7
+        # Fernbedienung FE7 (Nicht vorhanden)
+        slave: 1
+        address: 500 # Modbus Adresse 501 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG SOLLTEMPERATUR FE7
+        # Fernbedienung FE7 (Nicht vorhanden)
+        slave: 1
+        address: 501 # Modbus Adresse 502 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG AUSSENTEMPERATUR
+        slave: 1
+        address: 506 # Modbus Adresse 507 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG ISTTEMPERATUR HK 1
+        slave: 1
+        address: 507 # Modbus Adresse 508 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG SOLLTEMPERATUR HK 1
+        slave: 1
+        address: 509 # Modbus Adresse 510 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG VORLAUFISTTEMPERATUR WP
+        slave: 1
+        address: 512 # Modbus Adresse 513 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG VORLAUFISTTEMPERATUR NHZ
+        slave: 1
+        address: 513 # Modbus Adresse 514 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG VORLAUFISTTEMPERATUR
+        slave: 1
+        address: 514 # Modbus Adresse 515 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG RUECKLAUFISTTEMPERATUR
+        slave: 1
+        address: 515 # Modbus Adresse 516 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG FESTWERTSOLLTEMPERATUR
+        slave: 1
+        address: 516 # Modbus Adresse 517 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG PUFFERISTTEMPERATUR
+        slave: 1
+        address: 517 # Modbus Adresse 518 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG PUFFERSOLLTEMPERATUR
+        slave: 1
+        address: 518 # Modbus Adresse 519 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG HEIZUNGSDRUCK
+        slave: 1
+        address: 519 # Modbus Adresse 520 - Offset 1
+        input_type: input
+        unit_of_measurement: bar
+        device_class: pressure
+        scale: 0.01
+        precision: 2
+        scan_interval: 60
+
+      - name: ISG VOLUMENSTROM
+        slave: 1
+        address: 520 # Modbus Adresse 521 - Offset 1
+        input_type: input
+        unit_of_measurement: L
+        device_class: volume
+        scale: 0.1
+        precision: 2
+        scan_interval: 60
+
+      - name: ISG ISTTEMPERATUR WW
+        slave: 1
+        address: 521 # Modbus Adresse 522 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG SOLLTEMPERATUR WW
+        slave: 1
+        address: 522 # Modbus Adresse 523 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG RUECKLAUFTEMPERATUR
+        slave: 1
+        address: 541 # Modbus Adresse 542 - Offset 1
+        input_type: input
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      # Block 2: Systemparameter (Read/Write Holding Register)
+      - name: ISG BETRIEBSART
+        slave: 1
+        address: 1500 # Modbus Adresse 1501 - Offset 1
+        input_type: holding
+        data_type: int16
+        unit_of_measurement: state
+        scan_interval: 60
+
+      - name: ISG KOMFORT TEMPERATUR
+        slave: 1
+        address: 1501 # Modbus Adresse 1502 - Offset 1
+        input_type: holding
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG ECO TEMPERATUR
+        slave: 1
+        address: 1502 # Modbus Adresse 1503 - Offset 1
+        input_type: holding
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG STEIGUNG HEIZKURVE
+        slave: 1
+        address: 1503 # Modbus Adresse 1504 - Offset 1
+        input_type: holding
+        unit_of_measurement: state
+        scale: 0.01
+        precision: 2
+        scan_interval: 60
+
+      - name: ISG FESTWERTBETRIEB
+        slave: 1
+        address: 1507 # Modbus Adresse 1508 - Offset 1
+        input_type: holding
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG KOMFORT TEMPERATUR Warmwasser
+        slave: 1
+        address: 1509 # Modbus Adresse 1510 - Offset 1
+        input_type: holding
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG ECO TEMPERATUR Warmwasser
+        slave: 1
+        address: 1510 # Modbus Adresse 1511 - Offset 1
+        input_type: holding
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      - name: ISG WARMWASSERSTUFEN
+        slave: 1
+        address: 1511 # Modbus Adresse 1512 - Offset 1
+        input_type: holding
+        unit_of_measurement: state
+        data_type: int16
+        scan_interval: 60
+
+      - name: ISG BIVALENZTEMPERATUR WW
+        slave: 1
+        address: 1512 # Modbus Adresse 1513 - Offset 1
+        input_type: holding
+        unit_of_measurement: °C
+        device_class: temperature
+        scale: 0.1
+        precision: 1
+        scan_interval: 60
+
+      # Block 3: Systemstatus (Read Input Register)
+      - name: ISG BETRIEBSSTATUS
+        slave: 1
+        address: 2500 # Modbus Adresse 2501 - Offset 1
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: state
+        scan_interval: 60
+
+      - name: ISG FEHLERSTATUS
+        slave: 1
+        address: 2503 # Modbus Adresse 2504 - Offset 1
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: state
+        scan_interval: 60
+
+      - name: ISG ABTAUEN EINGELEITET
+        slave: 1
+        address: 2505 # Modbus Adresse 2506 - Offset 1
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: state
+        scan_interval: 60
+
+      - name: ISG aktiver Fehler
+        slave: 1
+        address: 2506 # Modbus Adresse 2507 - Offset 1
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: state
+        scan_interval: 60
+
+      - name: ISG MELDUNGSNUMMER
+        slave: 1
+        address: 2507 # Modbus Adresse 2508 - Offset 1
+        input_type: input
+        data_type: uint16
+        unit_of_measurement: state
+        scan_interval: 60
+
+      # Block 4: Energetische Daten (Read Input Register)
+      - name: ISG VD HEIZEN TAG Wärmemenge # liefert nicht Nachkommastellen
+        # sensor.isg_vd_heizen_tag_warmemenge
+        slave: 1
+        address: 3500 # Modbus Adresse 3501 - Offset 1
+        input_type: input
+        unit_of_measurement: kWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG VD HEIZEN SUMME Wärmemenge Nachkommastellen
+        # sensor.isg_vd_heizen_summe_warmemenge_nachkommastellen
+        slave: 1
+        address: 3501 # Modbus Adresse 3502 - Offset 1
+        input_type: input
+        unit_of_measurement: kWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG VD HEIZEN SUMME Wärmemenge Vorkommastellen
+        # sensor.isg_vd_heizen_summe_warmemenge_vorkommastellen
+        slave: 1
+        address: 3502 # Modbus Adresse 3503 - Offset 1
+        input_type: input
+        unit_of_measurement: MWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG VD WARMWASSER TAG Wärmemenge # liefert nicht Nachkommastellen
+        slave: 1
+        address: 3503 # Modbus Adresse 3504 - Offset 1
+        input_type: input
+        unit_of_measurement: kWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG VD WARMWASSER SUMME Wärmemenge Nachkommastellen
+        slave: 1
+        address: 3504 # Modbus Adresse 3505 - Offset 1
+        input_type: input
+        unit_of_measurement: kWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG VD WARMWASSER SUMME Wärmemenge Vorkommastellen
+        slave: 1
+        address: 3505 # Modbus Adresse 3506 - Offset 1
+        input_type: input
+        unit_of_measurement: MWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG NHZ HEIZEN SUMME Wärmemenge Nachkommastellen
+        slave: 1
+        address: 3506 # Modbus Adresse 3507 - Offset 1
+        input_type: input
+        unit_of_measurement: kWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG NHZ HEIZEN SUMME Wärmemenge Vorkommastellen
+        slave: 1
+        address: 3507 # Modbus Adresse 3508 - Offset 1
+        input_type: input
+        unit_of_measurement: MWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG NHZ WARMWASSER SUMME Wärmemenge Nachkommastellen
+        slave: 1
+        address: 3508 # Modbus Adresse 3509 - Offset 1
+        input_type: input
+        unit_of_measurement: kWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG NHZ WARMWASSER SUMME Wärmemenge Vorkommastellen
+        slave: 1
+        address: 3509 # Modbus Adresse 3510 - Offset 1
+        input_type: input
+        unit_of_measurement: MWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG VD HEIZEN TAG Leistungsaufnahme # liefert nicht Nachkommastellen
+        slave: 1
+        address: 3510 # Modbus Adresse 3511 - Offset 1
+        input_type: input
+        unit_of_measurement: kWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG VD HEIZEN SUMME Leistungsaufnahme Nachkommastellen
+        slave: 1
+        address: 3511 # Modbus Adresse 3512 - Offset 1
+        input_type: input
+        unit_of_measurement: kWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG VD HEIZEN SUMME Leistungsaufnahme Vorkommastellen
+        slave: 1
+        address: 3512 # Modbus Adresse 3513 - Offset 1
+        input_type: input
+        unit_of_measurement: MWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG VD WARMWASSER TAG Leistungsaufnahme # liefert nicht Nachkommastellen
+        slave: 1
+        address: 3513 # Modbus Adresse 3514 - Offset 1
+        input_type: input
+        unit_of_measurement: kWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG VD WARMWASSER SUMME Leistungsaufnahme Nachkommastellen
+        slave: 1
+        address: 3514 # Modbus Adresse 3515 - Offset 1
+        input_type: input
+        unit_of_measurement: kWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG VD WARMWASSER SUMME Leistungsaufnahme Vorkommastellen
+        slave: 1
+        address: 3515 # Modbus Adresse 3516 - Offset 1
+        input_type: input
+        unit_of_measurement: MWh
+        device_class: energy
+        scale: 1
+        precision: 0
+        scan_interval: 60
+
+      - name: ISG VD 1 HEIZEN Laufzeit WP
+        slave: 1
+        address: 3538 # Modbus Adresse 3539 - Offset 1
+        input_type: input
+        unit_of_measurement: h
+        device_class: duration
+        scan_interval: 60
+
+      - name: ISG VD 2 HEIZEN Laufzeit WP
+        slave: 1
+        address: 3539 # Modbus Adresse 3540 - Offset 1
+        input_type: input
+        unit_of_measurement: h
+        device_class: duration
+        scan_interval: 60
+
+      - name: ISG VD 1/2 HEIZEN Laufzeit WP
+        slave: 1
+        address: 3540 # Modbus Adresse 3541 - Offset 1
+        input_type: input
+        unit_of_measurement: h
+        device_class: duration
+        scan_interval: 60
+
+      - name: ISG VD 1 WARMWASSER Laufzeit WP
+        slave: 1
+        address: 3541 # Modbus Adresse 3542 - Offset 1
+        input_type: input
+        unit_of_measurement: h
+        device_class: duration
+        scan_interval: 60
+
+      - name: ISG VD 2 WARMWASSER Laufzeit WP
+        slave: 1
+        address: 3542 # Modbus Adresse 3543 - Offset 1
+        input_type: input
+        unit_of_measurement: h
+        device_class: duration
+        scan_interval: 60
+
+      - name: ISG VD 1/2 WARMWASSER Laufzeit WP
+        slave: 1
+        address: 3543 # Modbus Adresse 3544 - Offset 1
+        input_type: input
+        unit_of_measurement: h
+        device_class: duration
+        scan_interval: 60
+
+      - name: ISG VD KUEHLEN Laufzeit WP
+        slave: 1
+        address: 3544 # Modbus Adresse 3545 - Offset 1
+        input_type: input
+        unit_of_measurement: h
+        device_class: duration
+        scan_interval: 60
+
+      - name: ISG NHZ 1 Laufzeit Nachheizstufe
+        slave: 1
+        address: 3545 # Modbus Adresse 3546 - Offset 1
+        input_type: input
+        unit_of_measurement: h
+        device_class: duration
+        scan_interval: 60
+
+      - name: ISG NHZ 2 Laufzeit Nachheizstufe
+        slave: 1
+        address: 3546 # Modbus Adresse 3547 - Offset 1
+        input_type: input
+        unit_of_measurement: h
+        device_class: duration
+        scan_interval: 60
+
+      - name: ISG NHZ 1/2 Laufzeit Nachheizstufe
+        slave: 1
+        address: 3547 # Modbus Adresse 3548 - Offset 1
+        input_type: input
+        unit_of_measurement: h
+        device_class: duration
+        scan_interval: 60
+
+      # Block 5: Energiemanagement Vorgaben (Read/Write Holding Register)
+      - name: ISG SG READY EIN- UND AUSSCHALTEN
+        slave: 1
+        address: 4000 # Modbus Adresse 4001 - Offset 1
+        input_type: holding
+        data_type: int16
+        unit_of_measurement: state
+        scan_interval: 60
+
+      - name: ISG SG READY EINGANG 1
+        slave: 1
+        address: 4001 # Modbus Adresse 4002 - Offset 1
+        input_type: holding
+        data_type: int16
+        unit_of_measurement: state
+        scan_interval: 60
+
+      - name: ISG SG READY EINGANG 2
+        slave: 1
+        address: 4002 # Modbus Adresse 4003 - Offset 1
+        input_type: holding
+        data_type: int16
+        unit_of_measurement: state
+        scan_interval: 60
+
+      # Block 6: : Energiemanagement Systeminformationen (Read Input Register)
+      - name: ISG SG READY BETRIEBSZUSTAND
+        slave: 1
+        address: 5000 # Modbus Adresse 5001 - Offset 1
+        input_type: input
+        data_type: int16
+        unit_of_measurement: state
+        scan_interval: 60
+
+      - name: ISG REGLERKENNUNG
+        slave: 1
+        address: 5001 # Modbus Adresse 5002 - Offset 1
+        input_type: input
+        data_type: int16
+        unit_of_measurement: state
+        scan_interval: 60
+
+    # Block 3: Systemstatus (Read Input Register)
+    binary_sensors:
+      - name: "ISG HEIZKREISPUMPE 1 Status"
+        # binary_sensor.heizkreispumpe_1_status
+        address: 2508 # Modbus Adresse 2509 - Offset 1
+        input_type: input
+        device_class: running
+        scan_interval: 60
+        slave: 1
+
+      - name: "ISG PUFFERLADEPUMPE 1 Status"
+        # sensor.pufferladepumpe_1_status
+        slave: 1
+        address: 2511 # Modbus Adresse 2512 - Offset 1
+        input_type: input
+        device_class: running
+        scan_interval: 60
+
+      - name: "ISG WARMWASSERLADEPUMPE Status"
+        # sensor.warmwasserladepumpe_status
+        slave: 1
+        address: 2513 # Modbus Adresse 2514 - Offset 1
+        input_type: input
+        device_class: running
+        scan_interval: 60
+
+      - name: "ISG QUELLENPUMPE Status"
+        # sensor.quellenpumpe_status
+        slave: 1
+        address: 2514 # Modbus Adresse 2515 - Offset 1
+        input_type: input
+        device_class: running
+        scan_interval: 60
+
+      - name: "ISG STÖRAUSGANG Status"
+        # sensor.stoerausgang_status
+        slave: 1
+        address: 2515 # Modbus Adresse 2516 - Offset 1
+        input_type: input
+        device_class: problem
+        scan_interval: 60
+
+      - name: "ISG ZIRKULATIONSPUMPE Status"
+        # sensor.ZIRKULATIONSPUMPE_status
+        slave: 1
+        address: 2516 # Modbus Adresse 2517 - Offset 1
+        input_type: input
+        device_class: running
+        scan_interval: 60
+
+      - name: "ISG NHZ 1 Status"
+        # sensor.nhz_1_status
+        slave: 1
+        address: 2524 # Modbus Adresse 2525 - Offset 1
+        input_type: input
+        device_class: running
+        scan_interval: 60
+
+      - name: "ISG PUMPE DIFFERENZREGLER Status"
+        # sensor.pumpe_differenzregler_status
+        slave: 1
+        address: 2533 # Modbus Adresse 2534 - Offset 1
+        input_type: input
+        device_class: running
+        scan_interval: 60
+
+      - name: "ISG VERDICHTER 1 Status"
+        # sensor.verdichter_1_status
+        slave: 1
+        address: 2541 # Modbus Adresse 2542 - Offset 1
+        input_type: input
+        device_class: running
+        scan_interval: 60

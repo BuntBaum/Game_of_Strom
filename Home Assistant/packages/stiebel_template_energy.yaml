@@ -1,0 +1,66 @@
+template:
+  # WÄRMEMENGE Heizen
+  - sensor:
+      - name: "ISG VD HEIZEN SUMME Wärmemenge"
+        # sensor.isg_vd_heizen_summe_warmemenge
+        unit_of_measurement: "kWh"
+        state_class: "total_increasing"
+        device_class: "energy"
+        icon: "mdi:flash"
+        state: >-
+          {% set summe_mwh = float(states('sensor.se_scrape_wm_heizen_summe')) %}
+          {% set summe_kwh = summe_mwh * 1000 %}
+          {{ summe_kwh | round(3, default=0) }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  # WÄRMEMENGE Warmwasser
+  - sensor:
+      - name: "ISG VD Warmwasser SUMME Wärmemenge"
+        # sensor.isg_vd_warmwasser_summe_warmemenge
+        unit_of_measurement: "kWh"
+        state_class: "total_increasing"
+        device_class: "energy"
+        icon: "mdi:flash"
+        state: >-
+          {% set summe_mwh = float(states('sensor.se_scrape_wm_warmwasser_summe')) %}
+          {% set summe_kwh = summe_mwh * 1000 %}
+          {{ summe_kwh | round(3, default=0) }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  # Nebenheizung
+
+  # LEISTUNGSAUFNAHME Heizen
+  - sensor:
+      - name: "ISG VD HEIZEN SUMME Leistungsaufnahme"
+        # sensor.isg_vd_heizen_summe_leistungsaufnahme
+        unit_of_measurement: "kWh"
+        state_class: "total_increasing"
+        device_class: "energy"
+        icon: "mdi:flash"
+        state: >-
+          {% set summe_mwh = float(states('sensor.se_scrape_la_heizen_summe')) %}
+          {% set summe_kwh = summe_mwh * 1000 %}          
+          {{ summe_kwh | round(3, default=0) }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  # LEISTUNGSAUFNAHME Warmwasser
+  - sensor:
+      - name: "ISG VD Warmwasser SUMME Leistungsaufnahme"
+        # sensor.isg_vd_warmwasser_summe_leistungsaufnahme
+        unit_of_measurement: "kWh"
+        state_class: "total_increasing"
+        device_class: "energy"
+        icon: "mdi:flash"
+        state: >-
+          {% set summe_mwh = float(states('sensor.se_scrape_la_warmwasser_summe')) %}
+          {% set summe_kwh = summe_mwh * 1000 %}          
+          {{ summe_kwh | round(3, default=0) }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}

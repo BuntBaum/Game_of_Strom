@@ -1,0 +1,57 @@
+template:
+  #   - sensor:
+  #       - name: "Kostal Plenticore Battery Energy"
+  #         unique_id: scb_battery_energy
+  #         unit_of_measurement: "kWh"
+  #         device_class: "energy"
+  #         icon: "mdi:battery"
+  #         state: >-
+  #           {% set soc = float(states('sensor.scb_battery_soc')) %}
+  #           {% set kapacity_kwh = 5 %}
+  #           {{ (soc/100 * kapacity_kwh) }}
+  #         attributes:
+  #           update_influxdb: >-
+  #             {{ (now().minute / 5) | round(0) }}
+
+  # Rechnet nicht richtig. Werte leicht zu hoch im Vergleich zu
+  # sensor.accumulated_consumption_regerstrasse_2
+  # oder
+  # sensor.scb_home_consumption_from_grid_day
+  - sensor:
+      - name: "Kostal Plenticore Power from Grid"
+        unit_of_measurement: "W"
+        device_class: "power"
+        icon: "mdi:transmission-tower-export"
+        state: >-
+          {% if states('sensor.scb_grid_power')|float >= 0 %}
+            {{ states('sensor.scb_grid_power')|float }}
+          {% else %}
+            0
+          {% endif %}
+
+  - sensor:
+      - name: "Kostal Plenticore Power to Grid"
+        unit_of_measurement: "W"
+        device_class: "power"
+        icon: "mdi:transmission-tower-export"
+        state: >-
+          {% if states('sensor.scb_grid_power')|float < 0 %}
+            {{ states('sensor.scb_grid_power')|float * -1 }}
+          {% else %}
+            0
+          {% endif %}
+
+# Rechnet im Detail noch nicht sauber. Geht auch mal runter.
+# - sensor:
+#     - name: "Kostal Plenticore Grid Generation Total"
+#       unique_id: Kostal_Plenticore_Grid_Generation_Total
+#       unit_of_measurement: "kWh"
+#       icon: mdi:transmission-tower-import
+#       device_class: energy
+#       state_class: total_increasing
+#       state: >-
+#         {% set yield = float(states('sensor.scb_energy_yield_total')) %}
+#         {% set consumption_from_pv = float(states('sensor.scb_home_consumption_from_pv_total')) %}
+#         {% set consumption_from_bat = float(states('sensor.scb_home_consumption_from_battery_total')) %}
+#         {{ (yield - consumption_from_pv - consumption_from_bat) | round(1, default=0) }}
+#

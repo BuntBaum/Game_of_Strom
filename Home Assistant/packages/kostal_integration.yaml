@@ -1,0 +1,18 @@
+sensor:
+  - platform: integration
+    source: sensor.kostal_plenticore_power_from_grid
+    # sensor.kostal_energy_from_grid_hourly
+    name: Kostal Energy from Grid Hourly
+    method: left
+    unit_prefix: k
+    unit_time: h
+    round: 2
+
+  - platform: integration
+    source: sensor.kostal_plenticore_power_to_grid
+    # sensor.kostal_energy_to_grid_hourly
+    name: Kostal Energy to Grid Hourly
+    method: left
+    unit_prefix: k
+    unit_time: h
+    round: 2

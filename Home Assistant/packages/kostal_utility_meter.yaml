@@ -1,0 +1,194 @@
+utility_meter:
+  scb_home_consumption_total_15_min:
+    # sensor.kostal_plenticore_home_consumption_total_15_min_2
+    source: sensor.scb_home_consumption_day
+    name: Kostal Plenticore Home Consumption Total 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  scb_home_consumption_total_hourly:
+    # sensor.kostal_plenticore_home_consumption_total_hourly
+    source: sensor.scb_home_consumption_day
+    name: Kostal Plenticore Home Consumption Total Hourly
+    cycle: hourly
+    periodically_resetting: true
+
+  scb_home_consumption_from_grid_15_min:
+    # sensor.kostal_plenticore_home_consumption_from_grid_15_min
+    source: sensor.kostal_energy_from_grid_hourly
+    name: Kostal Plenticore Home Consumption from Grid 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  scb_home_consumption_from_grid_hourly:
+    # sensor.kostal_plenticore_home_consumption_from_grid_hourly
+    source: sensor.kostal_energy_from_grid_hourly
+    name: Kostal Plenticore Home Consumption from Grid Hourly
+    cycle: hourly
+    periodically_resetting: true
+
+  scb_home_consumption_from_pv_15_min:
+    # sensor.kostal_plenticore_home_consumption_from_pv_15_min
+    source: sensor.scb_home_consumption_from_pv_day
+    name: Kostal Plenticore Home Consumption from PV 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  scb_home_consumption_from_pv_hourly:
+    # sensor.kostal_plenticore_home_consumption_from_pv_hourly
+    source: sensor.scb_home_consumption_from_pv_day
+    name: Kostal Plenticore Home Consumption from PV Hourly
+    cycle: hourly
+    periodically_resetting: true
+
+  # kostal_tbr_home_consumption_from_pv_hourly:
+  #   source: sensor.scb_home_consumption_from_pv_day
+  #   name: Kostal TBR Home Consumption from PV Hourly
+  #   unique_id: sensor.kostal_tbr_home_consumption_from_pv_hourly
+  #   cycle: hourly
+  #   periodically_resetting: true
+
+  scb_home_consumption_from_battery_15_min:
+    # sensor.kostal_plenticore_home_consumption_from_battery_15_min
+    source: sensor.scb_home_consumption_from_battery_day
+    name: Kostal Plenticore Home Consumption from Battery 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  scb_home_consumption_from_battery_hourly:
+    # sensor.kostal_plenticore_home_consumption_from_battery_hourly
+    source: sensor.scb_home_consumption_from_battery_day
+    name: Kostal Plenticore Home Consumption from Battery Hourly
+    cycle: hourly
+    periodically_resetting: true
+
+  scb_energy_yield_15_min:
+    # sensor.kostal_plenticore_energy_yield_15_min
+    source: sensor.scb_energy_yield_day
+    name: Kostal Plenticore Energy Yield 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  scb_energy_yield_hourly:
+    # sensor.kostal_plenticore_energy_yield_hourly
+    source: sensor.scb_energy_yield_day
+    name: Kostal Plenticore Energy Yield Hourly
+    cycle: hourly
+    periodically_resetting: true
+
+  scb_energy_discharge_to_grid_15_min:
+    # sensor.kostal_plenticore_energy_discharge_to_grid_15_min
+    source: sensor.scb_energy_discharge_to_grid_day
+    name: Kostal Plenticore Energy Discharge to Grid 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  scb_energy_discharge_to_grid_hourly:
+    # sensor.kostal_plenticore_energy_discharge_to_grid_hourly
+    source: sensor.scb_energy_discharge_to_grid_day
+    name: Kostal Plenticore Energy Discharge to Grid Hourly
+    cycle: hourly
+    periodically_resetting: true
+
+  scb_battery_charge_from_grid_15_min:
+    # sensor.kostal_plenticore_battery_charge_from_grid_15_min
+    source: sensor.scb_battery_charge_from_grid_day
+    name: Kostal Plenticore Battery Charge from Grid 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  scb_battery_charge_from_grid_hourly:
+    # sensor.kostal_plenticore_battery_charge_from_grid_hourly
+    source: sensor.scb_battery_charge_from_grid_day
+    name: Kostal Plenticore Battery Charge from Grid Hourly
+    cycle: hourly
+    periodically_resetting: true
+
+  scb_battery_charge_from_pv_15_min:
+    # sensor.kostal_plenticore_battery_charge_from_pv_15_min
+    source: sensor.scb_battery_charge_from_pv_day
+    name: Kostal Plenticore Battery Charge from PV 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  scb_battery_charge_from_pv_hourly:
+    # sensor.kostal_plenticore_battery_charge_from_pv_hourly
+    source: sensor.scb_battery_charge_from_pv_day
+    name: Kostal Plenticore Battery Charge from PV Hourly
+    cycle: hourly
+    periodically_resetting: true
+
+  scb_energy_from_grid_15_min:
+    # sensor.kostal_plenticore_energy_from_grid_15_min
+    source: sensor.scb_home_consumption_from_grid_total
+    name: Kostal Plenticore Energy from Grid 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  scb_energy_from_grid_hourly:
+    # sensor.kostal_plenticore_energy_from_grid_hourly
+    source: sensor.scb_home_consumption_from_grid_total
+    name: Kostal Plenticore Energy from Grid Hourly
+    cycle: hourly
+    periodically_resetting: true
+
+  # scb_energy_from_grid_daily:
+  #   source: sensor.scb_home_consumption_from_grid_total
+  #   name: Kostal Plenticore Energy from Grid Daily
+  #   cycle: daily
+  #   periodically_resetting: true
+
+  # scb_energy_from_grid_weekly:
+  #   source: sensor.scb_home_consumption_from_grid_total
+  #   name: Kostal Plenticore Energy from Grid Weekly
+  #   cycle: weekly
+  #   periodically_resetting: true
+
+  # scb_energy_from_grid_monthly:
+  #   source: sensor.scb_home_consumption_from_grid_total
+  #   name: Kostal Plenticore Energy from Grid Monthly
+  #   cycle: monthly
+  #   periodically_resetting: true
+
+  # # Falscher Startpunkt
+  # scb_energy_from_grid_yearly:
+  #   source: sensor.kostal_plenticore_power_from_grid
+  #   name: Kostal Plenticore Energy from Grid Yearly
+  #   cycle: yearly
+  #   periodically_resetting: true
+
+  # scb_energy_to_grid_15_min:
+  #   source: sensor.kostal_plenticore_grid_generation_total
+  #   name: Kostal Plenticore Energy to Grid 15 min
+  #   cycle: quarter-hourly
+  #   periodically_resetting: true
+
+  # scb_energy_to_grid_hourly:
+  #   source: sensor.kostal_plenticore_grid_generation_total
+  #   name: Kostal Plenticore Energy to Grid Hourly
+  #   cycle: hourly
+  #   periodically_resetting: true
+
+  # scb_energy_to_grid_daily:
+  #   source: sensor.kostal_plenticore_grid_generation_total
+  #   name: Kostal Plenticore Energy to Grid Daily
+  #   cycle: daily
+  #   periodically_resetting: true
+
+  # scb_energy_to_grid_weekly:
+  #   source: sensor.kostal_plenticore_grid_generation_total
+  #   name: Kostal Plenticore Energy to Grid Weekly
+  #   cycle: weekly
+  #   periodically_resetting: true
+
+  # scb_energy_to_grid_monthly:
+  #   source: sensor.kostal_plenticore_grid_generation_total
+  #   name: Kostal Plenticore Energy to Grid Monthly
+  #   cycle: monthly
+  #   periodically_resetting: true
+
+  # scb_energy_to_grid_yearly:
+  #   source: sensor.kostal_plenticore_grid_generation_total
+  #   name: Kostal Plenticore Energy to Grid Yearly
+  #   cycle: yearly
+  #   periodically_resetting: true

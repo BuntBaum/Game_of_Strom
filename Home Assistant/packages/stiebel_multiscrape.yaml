@@ -1,0 +1,119 @@
+multiscrape:
+  # https://github.com/danieldotnl/ha-multiscrape
+  - name: ISG_Web_scraper
+    resource: http://192.168.178.57//?s=1,1
+    scan_interval: 0 # Wird per Button getriggert
+    form_submit:
+      select: "#werte"
+      input:
+        user: !secret isg_web_user
+        pass: !secret isg_web_password
+      submit_once: True
+    sensor:
+      # STROM INVERTER
+      - unique_id: se_scrape_strom_inverter
+        name: ISG Web scraper Strom Inverter
+        select: "div.span-11:nth-child(1) > table:nth-child(1) > tr:nth-child(14) > td:nth-child(2)"
+        value_template: '{{ (value | replace ("A", "") | replace(",", ".")) | float }}'
+        unit_of_measurement: A
+        device_class: current
+        force_update: True
+
+        # SPANNUNG INVERTER
+      - unique_id: se_scrape_spannung_inverter
+        name: ISG Web scraper Spannung Inverter
+        select: "div.span-11:nth-child(1) > table:nth-child(1) > tr:nth-child(15) > td:nth-child(2)"
+        value_template: '{{ (value | replace ("V", "") | replace(",", ".")) | float }}'
+        unit_of_measurement: V
+        device_class: voltage
+        force_update: True
+
+        # Wärmemenge VD Heizen Tag
+      - unique_id: se_scrape_wm_heizen_tag
+        name: ISG Web scraper Wärmemenge Heizen Tag
+        select: "div.span-11:nth-child(2) > table:nth-child(1) > tr:nth-child(2) > td:nth-child(2)"
+        value_template: '{{ (value | replace ("KWh", "") | replace(",", ".")) | float }}'
+        unit_of_measurement: kWh
+        # device_class: energy
+        force_update: True
+
+        # Wärmemenge VD Heizen Summe
+      - unique_id: se_scrape_wm_heizen_summe
+        name: ISG Web scraper Wärmemenge Heizen Summe
+        select: "div.span-11:nth-child(2) > table:nth-child(1) > tr:nth-child(3) > td:nth-child(2)"
+        value_template: '{{ (value | replace ("MWh", "") | replace(",", ".")) | float }}'
+        unit_of_measurement: MWh
+        # device_class: energy
+        force_update: True
+
+        # Wärmemenge VD Warmwasser Tag
+      - unique_id: se_scrape_wm_warmwasser_tag
+        name: ISG Web scraper Wärmemenge Wasser Tag
+        select: "div.span-11:nth-child(2) > table:nth-child(1) > tr:nth-child(4) > td:nth-child(2)"
+        value_template: '{{ (value | replace ("KWh", "") | replace(",", ".")) | float }}'
+        unit_of_measurement: kWh
+        # device_class: energy
+        force_update: True
+
+        # Wärmemenge VD Warmwasser Summe
+      - unique_id: se_scrape_wm_warmwasser_summe
+        name: ISG Web scraper Wärmemenge Wasser Summe
+        select: "div.span-11:nth-child(2) > table:nth-child(1) > tr:nth-child(5) > td:nth-child(2)"
+        value_template: '{{ (value | replace ("MWh", "") | replace(",", ".")) | float }}'
+        unit_of_measurement: MWh
+        # device_class: energy
+        force_update: True
+
+        # Wärmemenge NHZ Heizen Tag
+      - unique_id: se_scrape_wm_nhz_tag
+        name: ISG Web scraper Wärmemenge Notheizung Tag
+        select: "div.span-11:nth-child(2) > table:nth-child(1) > tr:nth-child(6) > td:nth-child(2)"
+        value_template: '{{ (value | replace ("MWh", "") | replace(",", ".")) | float }}'
+        unit_of_measurement: MWh
+        # device_class: energy
+        force_update: True
+
+        # Wärmemenge NHZ Heizen Summe
+      - unique_id: se_scrape_wm_nhz_summe
+        name: ISG Web scraper Wärmemenge Notheizung Summe
+        select: "div.span-11:nth-child(2) > table:nth-child(1) > tr:nth-child(7) > td:nth-child(2)"
+        value_template: '{{ (value | replace ("MWh", "") | replace(",", ".")) | float }}'
+        unit_of_measurement: MWh
+        # device_class: energy
+        force_update: True
+
+        # Leistungsaufnahme VD Heizen Tag
+      - unique_id: se_scrape_la_heizen_tag
+        name: ISG Web scraper Leistungsaufnahme Heizen Tag
+        select: "div.span-11:nth-child(3) > table:nth-child(1) > tr:nth-child(2) > td:nth-child(2)"
+        value_template: '{{ (value | replace ("KWh", "") | replace(",", ".")) | float }}'
+        unit_of_measurement: kWh
+        # device_class: energy
+        force_update: True
+
+        # Leistungsaufnahme VD Heizen Summe
+      - unique_id: se_scrape_la_heizen_summe
+        name: ISG Web scraper Leistungsaufnahme Heizen Summe
+        select: "div.span-11:nth-child(3) > table:nth-child(1) > tr:nth-child(3) > td:nth-child(2)"
+        value_template: '{{ (value | replace ("MWh", "") | replace(",", ".")) | float }}'
+        unit_of_measurement: MWh
+        # device_class: energy
+        force_update: True
+
+        # Leistungsaufnahme VD Warmwasser Tag
+      - unique_id: se_scrape_la_warmwasser_tag
+        name: ISG Web scraper Leistungsaufnahme Wasser Tag
+        select: "div.span-11:nth-child(3) > table:nth-child(1) > tr:nth-child(4) > td:nth-child(2)"
+        value_template: '{{ (value | replace ("KWh", "") | replace(",", ".")) | float }}'
+        unit_of_measurement: kWh
+        # device_class: energy
+        force_update: True
+
+        # Leistungsaufnahme VD Warmwasser Summe
+      - unique_id: se_scrape_la_warmwasser_summe
+        name: ISG Web scraper Leistungsaufnahme Wasser Summe
+        select: "div.span-11:nth-child(3) > table:nth-child(1) > tr:nth-child(5) > td:nth-child(2)"
+        value_template: '{{ (value | replace ("MWh", "") | replace(",", ".")) | float }}'
+        unit_of_measurement: MWh
+        # device_class: energy
+        force_update: True

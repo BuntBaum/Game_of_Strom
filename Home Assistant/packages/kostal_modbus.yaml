@@ -1,0 +1,72 @@
+modbus:
+  ##########################################################
+  # Kostal Plenticore
+  - name: kostal
+    type: tcp
+    host: 192.168.178.59
+    port: 1502
+    ##########################################################
+
+    sensors:
+      - name: Kostal Home own consumption from grid
+        slave: 71
+        address: 108
+        input_type: holding
+        unit_of_measurement: W
+        device_class: power
+        data_type: float32
+        scan_interval: 1
+        count: 2
+
+      - name: Kostal Total active power (powermeter)
+        slave: 71
+        address: 252
+        input_type: holding
+        unit_of_measurement: W
+        device_class: power
+        data_type: float32
+        scan_interval: 1
+        count: 2
+
+      # Energieerzeugung Täglich
+      - name: Kostal Plenticore Daily yield
+        slave: 71
+        address: 322
+        input_type: holding
+        unit_of_measurement: Wh
+        device_class: energy
+        data_type: float32
+        scan_interval: 60
+        count: 2
+
+        # Energieerzeugung Gesamt
+      - name: Kostal Plenticore Generation Energy
+        slave: 71
+        address: 577
+        input_type: holding
+        unit_of_measurement: Wh
+        device_class: energy
+        data_type: uint32
+        scan_interval: 60
+        count: 2
+
+        # Netzeinspeisung Gesamt
+      - name: Kostal Plenticore Total energy AC-side to grid
+        slave: 71
+        address: 1064
+        input_type: holding
+        unit_of_measurement: Wh
+        device_class: energy
+        data_type: float32
+        scan_interval: 60
+        count: 2
+
+        # External battery management
+      - name: Kostal Plenticore Battery Minimum SOC
+        slave: 71
+        address: 1042
+        input_type: holding
+        unit_of_measurement: state
+        data_type: float32
+        scan_interval: 60
+        count: 2

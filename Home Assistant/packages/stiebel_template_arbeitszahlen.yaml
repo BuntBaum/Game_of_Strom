@@ -1,0 +1,296 @@
+template:
+  # ARBEITSZAHLEN
+  - sensor:
+      - name: "ISG VD HEIZEN Arbeitszahl 15min"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_heizen_warmemenge_15_min') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_heizen_leistungsaufnahme_15_min') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+      - name: "ISG VD HEIZEN Arbeitszahl stündlich"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_heizen_warmemenge_stundlich') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_heizen_leistungsaufnahme_stundlich') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+      - name: "ISG VD HEIZEN Arbeitszahl täglich"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_heizen_warmemenge_taglich') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_heizen_leistungsaufnahme_taglich') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+      - name: "ISG VD HEIZEN Arbeitszahl wöchentlich"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_heizen_warmemenge_wochentlich') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_heizen_leistungsaufnahme_wochentlich') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+      - name: "ISG VD HEIZEN Arbeitszahl monatlich"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_heizen_warmemenge_monatlich') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_heizen_leistungsaufnahme_monatlich') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+      - name: "ISG VD HEIZEN Arbeitszahl jährlich"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_heizen_warmemenge_jahrlich') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_heizen_leistungsaufnahme_jahrlich') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+      - name: "ISG VD HEIZEN Arbeitszahl gesamt"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_heizen_summe_warmemenge') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_heizen_summe_leistungsaufnahme') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+      - name: "ISG VD Warmwasser Arbeitszahl 15min"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_wasser_warmemenge_15_min') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_wasser_leistungsaufnahme_15_min') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+      - name: "ISG VD Warmwasser Arbeitszahl stündlich"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_wasser_warmemenge_stundlich') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_wasser_leistungsaufnahme_stundlich') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+      - name: "ISG VD Warmwasser Arbeitszahl täglich"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_wasser_warmemenge_taglich') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_wasser_leistungsaufnahme_taglich') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+      - name: "ISG VD Warmwasser Arbeitszahl wöchentlich"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_wasser_warmemenge_wochentlich') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_wasser_leistungsaufnahme_wochentlich') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+      - name: "ISG VD Warmwasser Arbeitszahl monatlich"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_wasser_warmemenge_monatlich') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_wasser_leistungsaufnahme_monatlich') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+      - name: "ISG VD Warmwasser Arbeitszahl jährlich"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_wasser_warmemenge_jahrlich') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_wasser_leistungsaufnahme_jahrlich') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().year) }}
+
+      - name: "ISG VD Warmwasser Arbeitszahl gesamt"
+        icon: "mdi:flash"
+        state: >-
+          {% set waermemenge = states('sensor.isg_vd_warmwasser_summe_warmemenge') %}
+          {% set leistungsaufnahme = states('sensor.isg_vd_warmwasser_summe_leistungsaufnahme') %}
+          {% if waermemenge != 'unavailable' and leistungsaufnahme != 'unavailable' %}
+            {% set waermemenge_float = float(waermemenge) %}
+            {% set leistungsaufnahme_float = float(leistungsaufnahme) %}
+            {% if leistungsaufnahme_float > 0 and waermemenge_float > 0 %}
+              {% set arbeitszahl = waermemenge_float / leistungsaufnahme_float %}
+              {{ arbeitszahl }}
+            {% else %}
+              0
+            {% endif %}
+          {% else %}
+            0
+          {% endif %}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}

@@ -1,0 +1,15 @@
+template:
+  # LEISTUNG INVERTER
+  - sensor:
+      - name: "ISG Leistung Inverter"
+        # sensor.leistung_inverter
+        unit_of_measurement: "W"
+        device_class: "power"
+        icon: "mdi:flash"
+        state: >-
+          {% set strom = states('sensor.se_scrape_strom_inverter') | float %}
+          {% set spannung = states('sensor.se_scrape_spannung_inverter') | float %}
+          {{ (strom * spannung) | round(2, default=0) }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}

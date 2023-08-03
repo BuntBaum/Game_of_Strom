@@ -1,0 +1,54 @@
+template:
+  - sensor:
+      - name: "Innentemperatur Erdgeschoss"
+        unit_of_measurement: "°C"
+        icon: mdi:radiator
+        device_class: temperature
+        state: >-
+          {% set flur = state_attr('climate.hkr_eg_flur', 'current_temperature') %}
+          {% set kueche = state_attr('climate.hkr_eg_kueche', 'current_temperature') %}
+          {% set wc = state_attr('climate.hkr_eg_wc', 'current_temperature') %}
+          {% set wz1 = state_attr('climate.hkr_eg_wohnz_links', 'current_temperature') %}
+          {% set wz2 = state_attr('climate.hkr_eg_wohnz_rechts', 'current_temperature') %}
+
+          {% set temperaturen = [flur, kueche, wc, wz1, wz2] %}
+          {% set sorted_temperaturen = temperaturen | sort %}
+
+          {% if sorted_temperaturen | length % 2 == 1 %}
+            {% set median = sorted_temperaturen[sorted_temperaturen | length // 2] %}
+          {% else %}
+            {% set lower_median = sorted_temperaturen[sorted_temperaturen | length // 2 - 1] %}
+            {% set upper_median = sorted_temperaturen[sorted_temperaturen | length // 2] %}
+            {% set median = (lower_median + upper_median) / 2 %}
+          {% endif %}
+          {{  median }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  - sensor:
+      - name: "Innentemperatur Obergeschoss"
+        unit_of_measurement: "°C"
+        icon: mdi:radiator
+        device_class: temperature
+        state: >-
+          {% set bad = state_attr('climate.hkr_og_bad_handtuch', 'current_temperature') %}
+          {% set buero = state_attr('climate.hkr_og_buero', 'current_temperature') %}
+          {% set ole = state_attr('climate.hkr_og_ole', 'current_temperature') %}
+          {% set schlaf = state_attr('climate.hkr_og_schlafzi', 'current_temperature') %}
+
+
+          {% set temperaturen = [bad, buero, ole, schlaf] %}
+          {% set sorted_temperaturen = temperaturen | sort %}
+
+          {% if sorted_temperaturen | length % 2 == 1 %}
+            {% set median = sorted_temperaturen[sorted_temperaturen | length // 2] %}
+          {% else %}
+            {% set lower_median = sorted_temperaturen[sorted_temperaturen | length // 2 - 1] %}
+            {% set upper_median = sorted_temperaturen[sorted_temperaturen | length // 2] %}
+            {% set median = (lower_median + upper_median) / 2 %}
+          {% endif %}
+          {{  median }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
