@@ -1,0 +1,95 @@
+# isg_set_betriebsart:
+#   alias: ISG SET BETRIEBSART
+#   description: Schreibt den Wert in Stiebel ISG Modbus Register 1501
+#   fields:
+#     betriebsart:
+#       name: Betriebsart
+#       description: Welche Betriebsart soll ausgeführt werden?
+#       required: true
+#       example: "4"
+#       default: "2: PROGRAMMBETRIEB"
+#       selector:
+#         select:
+#           options:
+#             - "0: NOTBETRIEB"
+#             - "1: BEREITSCHAFTSBETRIEB"
+#             - "2: PROGRAMMBETRIEB"
+#             - "3: KOMFORTBETRIEB"
+#             - "4: ECO-BETRIEB"
+#             - "5: WARMWASSERBETRIEB"
+#   sequence:
+#     - service: modbus.write_register
+#       data:
+#         hub: isg
+#         address: 1500
+#         slave: 1
+#         value: "{{ betriebsart.split(':')[0] }}"
+#   mode: single
+
+isg_set_komfort_temperatur_warmwasser:
+  alias: ISG SET KOMFORT TEMPERATUR WARMWASSER
+  description: Schreibt den Wert in Stiebel ISG Modbus Register 1510
+  fields:
+    komforttemperatur_warmwasser:
+      name: ISG Komforttemperatur Warmwasser
+      description: Auf welche Temperatur soll das Wasser erwärmt werden?
+      required: true
+      default: 48
+      selector:
+        number:
+          min: 10
+          max: 60
+          step: 0.1
+          mode: slider
+  sequence:
+    - service: modbus.write_register
+      data:
+        hub: isg
+        address: 1509 # Modbus Adresse 1510 - Offset 1
+        slave: 1
+        value: "{{ (komforttemperatur_warmwasser * 10) | int }}" # Schreib-Multiplikator
+  mode: single
+
+isg_set_festwert_temperatur:
+  alias: ISG SET FESTWERT TEMPERATUR
+  description: Schreibt den Wert in Stiebel ISG Modbus Register 1508
+  fields:
+    festwert_temperatur:
+      name: ISG Festwerttemperatur
+      description: Auf welche Temperatur soll der Heizkreis gebracht werden?
+      required: true
+      default: 20
+      selector:
+        number:
+          min: 20
+          max: 70
+          step: 1
+          mode: slider
+  sequence:
+    - service: modbus.write_register
+      data:
+        hub: isg
+        address: 1507 # Modbus Adresse 1508 - Offset 1
+        slave: 1
+        value: "{{ (festwert_temperatur * 10) | int }}" # Schreib-Multiplikator
+  mode: single
+
+isg_set_festwertbetrieb_ausstellen:
+  alias: ISG SET FESTWERTBETRIEB AUSSTELLEN
+  description: Schreibt den Wert in Stiebel ISG Modbus Register 1508
+  fields:
+    aus_wert:
+      name: ISG Festwertbetrieb Deaktivierungscode
+      description: Deaktiviert den Festwertbetrieb
+      required: true
+      default: "AUS"
+      selector:
+        text: {}
+  sequence:
+    - service: modbus.write_register
+      data:
+        hub: isg
+        address: 1507 # Modbus Adresse 1508 - Offset 1
+        slave: 1
+        value: 36864
+  mode: single
