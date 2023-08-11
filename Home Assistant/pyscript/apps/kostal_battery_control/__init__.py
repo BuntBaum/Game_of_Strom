@@ -36,10 +36,6 @@ def kostal_battery_control():
     # Battery will discharge if this value is > 0 and charge if it is < 0
     new_battery_power = battery_power 
 
-    if battery_soc < battery_soc_min: # If Battery should be charged --> CHARGE battery more
-        log.info("CHARGE battery more")
-        new_battery_power = max_charge_power_1038
-
 
     if home_power_from_grid > 0: # If Power is taken from the grid for home consumption --> Try to DISCHARGE the battery more
         log.info("Trying to DISCHARGE the battery more")
@@ -85,6 +81,10 @@ def kostal_battery_control():
             # make sure to limit charging power
             new_battery_power = max(new_battery_power, max_charge_power_1038)
 
+
+    if battery_soc < battery_soc_min: # If Battery should be charged --> CHARGE battery more
+        log.info("CHARGE battery more")
+        new_battery_power = max_charge_power_1038
 
 
     # Write result via modbus to Kostal Inverter
