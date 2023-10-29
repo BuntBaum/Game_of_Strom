@@ -19,7 +19,7 @@ Das primäre Ziel des Spiels ist es, die Stromkosten eines Haushalts zu minimier
 - Heimspeicher (BYD, 5kWh)
 - Wechselrichter ([PLENTICORE plus 7.0](https://www.kostal-solar-electric.com/de-de/produkte/hybrid-wechselrichter/plenticore-plus/))
 - Elektroauto ([Renault Zoe R110 Z.E. 50 (52 kWh)](https://en.wikipedia.org/wiki/Renault_Zoe))
-- Wallbox (GO-E Charger, 11kW)
+- Wallbox ([GO-E Gemini Flex, 22kW)](https://go-e.com/de-de/produkte/go-e-charger-gemini-flex))
 - Wärmepumpe für Raumheizung und Warmwasser ([Stiebel Eltron, 5kW](https://www.stiebel-eltron.de/de/home/produkte-loesungen/erneuerbare_energien/waermepumpe/luft-wasser-waermepumpen/wpl-a-05-07-hk-premium/wpl-a-05-hk-230-premium.html))
 - Intelligente Heizkörperregler ([Fritz Dect 301](https://avm.de/produkte/smart-home/fritzdect-301/))
 - Smart Home Server ([Home Assistant](https://www.home-assistant.io/))
