@@ -1,5 +1,7 @@
 # Game of Strom (Spielanleitung)
 
+![GOS_LOGO](https://github.com/BuntBaum/Game_of_Strom/assets/140110546/ade93bc8-50a6-4c45-b82b-29937eae82a5)
+
 ## Konzept
 "Game of Strom" ist eine innovative Plattform, die die typischen Merkmale einer [Energiemanagement-Software](https://en.wikipedia.org/wiki/Energy_management_software) mit spielerischen Aspekten kombiniert. Die Anwendung ermöglicht die direkte Interaktion durch den Benutzer oder den Einsatz von KI-Technologien für eine autonome und optimale Steuerung mittels [Reinforcement Learning](https://en.wikipedia.org/wiki/Reinforcement_learning).
 
