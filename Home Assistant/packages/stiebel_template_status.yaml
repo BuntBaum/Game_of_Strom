@@ -1,0 +1,108 @@
+template:
+  - sensor:
+      - name: "ISG Betriebsstatus HK 1 Pumpe B0"
+        icon: "mdi:pump"
+        state: >-
+          {{ states('sensor.isg_betriebsstatus')|int|bitwise_and(1) > 0 }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  - sensor:
+      - name: "ISG Betriebsstatus HK 2 Pumpe B1"
+        icon: "mdi:pump"
+        state: >-
+          {{ states('sensor.isg_betriebsstatus')|int|bitwise_and(2) > 0 }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  - sensor:
+      - name: "ISG Betriebsstatus Aufheizprogramm B2"
+        icon: "mdi:thermometer"
+        state: >-
+          {{ states('sensor.isg_betriebsstatus')|int|bitwise_and(4) > 0 }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  - sensor:
+      - name: "ISG Betriebsstatus NHZ Stufen in Betrieb B3"
+        icon: "mdi:radiator"
+        state: >-
+          {{ states('sensor.isg_betriebsstatus')|int|bitwise_and(8) > 0 }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  - sensor:
+      - name: "ISG Betriebsstatus WP im Heizbetrieb B4"
+        icon: "mdi:radiator-disabled"
+        state: >-
+          {{ states('sensor.isg_betriebsstatus')|int|bitwise_and(16) > 0 }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  - sensor:
+      - name: "ISG Betriebsstatus WP im Warmwasserbetrieb B5"
+        icon: "mdi:water-boiler"
+        state: >-
+          {{ states('sensor.isg_betriebsstatus')|int|bitwise_and(32) > 0 }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  - sensor:
+      - name: "ISG Betriebsstatus Verdichter in Betrieb B6"
+        icon: "mdi:compressor"
+        state: >-
+          {{ states('sensor.isg_betriebsstatus')|int|bitwise_and(64) > 0 }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  - sensor:
+      - name: "ISG Betriebsstatus Sommerbetrieb aktiv B7"
+        icon: "mdi:sunglasses"
+        state: >-
+          {{ states('sensor.isg_betriebsstatus')|int|bitwise_and(128) > 0 }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  - sensor:
+      - name: "ISG Betriebsstatus Kühlbetrieb aktiv B8"
+        icon: "mdi:snowflake"
+        state: >-
+          {{ states('sensor.isg_betriebsstatus')|int|bitwise_and(256) > 0 }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  - sensor:
+      - name: "ISG Betriebsstatus Min. eine IWS im Abtaubetrieb B9"
+        icon: "mdi:snowflake-variant"
+        state: >-
+          {{ states('sensor.isg_betriebsstatus')|int|bitwise_and(512) > 0 }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  - sensor:
+      - name: "ISG Betriebsstatus Silentmode 1 aktiv B10"
+        icon: "mdi:speaker-off"
+        state: >-
+          {{ states('sensor.isg_betriebsstatus')|int|bitwise_and(1024) > 0 }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}
+
+  - sensor:
+      - name: "ISG Betriebsstatus Silentmode 2 aktiv (WP aus) B11"
+        icon: "mdi:speaker-off"
+        state: >-
+          {{ states('sensor.isg_betriebsstatus')|int|bitwise_and(2048) > 0 }}
+        attributes:
+          update_influxdb: >-
+            {{ (now().minute / 5) | round(0) }}

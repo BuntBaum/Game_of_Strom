@@ -1,0 +1,76 @@
+modbus:
+  ##########################################################
+  # GO-E Gemini Wallbox
+  - name: goe_wb
+    type: tcp
+    host: 192.168.178.31
+    port: 502
+    ##########################################################
+
+    sensors:
+      - name: GOE ALLOW
+        slave: 1
+        address: 200
+        input_type: holding
+        data_type: uint16
+        scan_interval: 10
+        unit_of_measurement: state
+
+      - name: GOE ACCESS_STATE
+        slave: 1
+        address: 201
+        input_type: holding
+        data_type: uint16
+        scan_interval: 10
+        unit_of_measurement: state
+
+      - name: GOE AMPERE_VOLATILE
+        slave: 1
+        address: 299
+        input_type: holding
+        data_type: uint16
+        scan_interval: 10
+        unit_of_measurement: "A"
+
+      - name: GOE PHASE_SWITCH_MODE
+        slave: 1
+        address: 332
+        input_type: holding
+        data_type: uint16
+        scan_interval: 10
+        unit_of_measurement: state
+
+      - name: GOE FORCE_STATE
+        slave: 1
+        address: 337
+        input_type: holding
+        data_type: uint16
+        scan_interval: 10
+        unit_of_measurement: state
+
+      - name: GOE CAR_STATE
+        slave: 1
+        address: 100
+        input_type: input
+        data_type: uint16
+        scan_interval: 10
+        unit_of_measurement: state
+
+      - name: GOE POWER_TOTAL
+        slave: 1
+        address: 120
+        input_type: input
+        data_type: uint32
+        scan_interval: 60
+        scale: 0.00001
+        swap: word
+        unit_of_measurement: kW
+
+      - name: GOE ENERGY_TOTAL
+        slave: 1
+        address: 128
+        input_type: input
+        data_type: uint16
+        scan_interval: 60
+        scale: 0.1
+        unit_of_measurement: kWh

@@ -1,0 +1,181 @@
+# Verbrauchsmessungen je Intervall
+utility_meter:
+  isg_vd_heizen_warmemenge_15_min:
+    source: sensor.se_scrape_wm_heizen_tag
+    name: ISG VD Heizen Wärmemenge 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  isg_vd_heizen_warmemenge_stundlich:
+    source: sensor.se_scrape_wm_heizen_tag
+    name: ISG VD Heizen Wärmemenge stündlich
+    cycle: hourly
+    periodically_resetting: true
+
+  isg_vd_heizen_warmemenge_taglich:
+    source: sensor.se_scrape_wm_heizen_tag
+    name: ISG VD Heizen Wärmemenge täglich
+    cycle: daily
+    periodically_resetting: true
+
+  isg_vd_heizen_warmemenge_wochentlich:
+    source: sensor.isg_vd_heizen_summe_warmemenge
+    name: ISG VD Heizen Wärmemenge wöchentlich
+    cycle: weekly
+    periodically_resetting: true
+
+  isg_vd_heizen_warmemenge_monatlich:
+    source: sensor.isg_vd_heizen_summe_warmemenge
+    name: ISG VD Heizen Wärmemenge monatlich
+    cycle: monthly
+    periodically_resetting: true
+
+  isg_vd_heizen_warmemenge_jahrlich:
+    source: sensor.isg_vd_heizen_summe_warmemenge
+    name: ISG VD Heizen Wärmemenge jährlich
+    cycle: yearly
+    periodically_resetting: true
+
+  isg_vd_heizen_leistungsaufnahme_15_min:
+    source: sensor.se_scrape_la_heizen_tag
+    name: ISG VD Heizen Leistungsaufnahme 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  isg_vd_heizen_leistungsaufnahme_stundlich:
+    source: sensor.se_scrape_la_heizen_tag
+    name: ISG VD Heizen Leistungsaufnahme stündlich
+    cycle: hourly
+    periodically_resetting: true
+
+  isg_vd_heizen_leistungsaufnahme_taglich:
+    source: sensor.se_scrape_la_heizen_tag
+    name: ISG VD Heizen Leistungsaufnahme täglich
+    cycle: daily
+    periodically_resetting: true
+
+  isg_vd_heizen_leistungsaufnahme_wochentlich:
+    source: sensor.isg_vd_heizen_summe_leistungsaufnahme
+    name: ISG VD Heizen Leistungsaufnahme wöchentlich
+    cycle: weekly
+    periodically_resetting: true
+
+  isg_vd_heizen_leistungsaufnahme_monatlich:
+    source: sensor.isg_vd_heizen_summe_leistungsaufnahme
+    name: ISG VD Heizen Leistungsaufnahme monatlich
+    cycle: monthly
+    periodically_resetting: true
+
+  isg_vd_heizen_leistungsaufnahme_jahrlich:
+    source: sensor.isg_vd_heizen_summe_leistungsaufnahme
+    name: ISG VD Heizen Leistungsaufnahme jährlich
+    cycle: yearly
+    periodically_resetting: true
+
+  isg_vd_wasser_warmemenge_15_min:
+    source: sensor.se_scrape_wm_warmwasser_tag
+    name: ISG VD Wasser Wärmemenge 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  isg_vd_wasser_warmemenge_stundlich:
+    source: sensor.se_scrape_wm_warmwasser_tag
+    name: ISG VD Wasser Wärmemenge stündlich
+    cycle: hourly
+    periodically_resetting: true
+
+  isg_vd_wasser_warmemenge_taglich:
+    source: sensor.se_scrape_wm_warmwasser_tag
+    name: ISG VD Wasser Wärmemenge täglich
+    cycle: daily
+    periodically_resetting: true
+
+  isg_vd_wasser_warmemenge_wochentlich:
+    source: sensor.se_scrape_wm_warmwasser_summe
+    name: ISG VD Wasser Wärmemenge wöchentlich
+    cycle: weekly
+    periodically_resetting: true
+
+  isg_vd_wasser_warmemenge_monatlich:
+    source: sensor.se_scrape_wm_warmwasser_summe
+    name: ISG VD Wasser Wärmemenge monatlich
+    cycle: monthly
+    periodically_resetting: true
+
+  isg_vd_wasser_warmemenge_jahrlich:
+    source: sensor.se_scrape_wm_warmwasser_summe
+    name: ISG VD Wasser Wärmemenge jährlich
+    cycle: yearly
+    periodically_resetting: true
+
+  isg_vd_wasser_leistungsaufnahme_15_min:
+    source: sensor.se_scrape_la_warmwasser_tag
+    name: ISG VD Wasser Leistungsaufnahme 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  isg_vd_wasser_leistungsaufnahme_stundlich:
+    source: sensor.se_scrape_la_warmwasser_tag
+    name: ISG VD Wasser Leistungsaufnahme stündlich
+    cycle: hourly
+    periodically_resetting: true
+
+  isg_vd_wasser_leistungsaufnahme_taglich:
+    source: sensor.se_scrape_la_warmwasser_tag
+    name: ISG VD Wasser Leistungsaufnahme täglich
+    cycle: daily
+    periodically_resetting: true
+
+  isg_vd_wasser_leistungsaufnahme_wochentlich:
+    source: sensor.se_scrape_la_warmwasser_summe
+    name: ISG VD Wasser Leistungsaufnahme wöchentlich
+    cycle: weekly
+    periodically_resetting: true
+
+  isg_vd_wasser_leistungsaufnahme_monatlich:
+    source: sensor.se_scrape_la_warmwasser_summe
+    name: ISG VD Wasser Leistungsaufnahme monatlich
+    cycle: monthly
+    periodically_resetting: true
+
+  isg_vd_wasser_leistungsaufnahme_jahrlich:
+    source: sensor.se_scrape_la_warmwasser_summe
+    name: ISG VD Wasser Leistungsaufnahme jährlich
+    cycle: yearly
+    periodically_resetting: true
+
+  isg_vd_nhz_warmemenge_15_min:
+    source: sensor.se_scrape_wm_nhz_tag
+    name: ISG VD NHZ Wärmemenge 15 min
+    cycle: quarter-hourly
+    periodically_resetting: true
+
+  isg_vd_nhz_warmemenge_stundlich:
+    source: sensor.se_scrape_wm_nhz_tag
+    name: ISG VD NHZ Wärmemenge stündlich
+    cycle: hourly
+    periodically_resetting: true
+
+  isg_vd_nhz_warmemenge_taglich:
+    source: sensor.se_scrape_wm_nhz_tag
+    name: ISG VD NHZ Wärmemenge täglich
+    cycle: daily
+    periodically_resetting: true
+
+  isg_vd_nhz_warmemenge_wochentlich:
+    source: sensor.se_scrape_wm_nhz_summe
+    name: ISG VD NHZ Wärmemenge wöchentlich
+    cycle: weekly
+    periodically_resetting: true
+
+  isg_vd_nhz_warmemenge_monatlich:
+    source: sensor.se_scrape_wm_nhz_summe
+    name: ISG VD NHZ Wärmemenge monatlich
+    cycle: monthly
+    periodically_resetting: true
+
+  isg_vd_nhz_warmemenge_jahrlich:
+    source: sensor.se_scrape_wm_nhz_summe
+    name: ISG VD NHZ Wärmemenge jährlich
+    cycle: yearly
+    periodically_resetting: true
