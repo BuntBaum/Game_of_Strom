@@ -2,12 +2,16 @@ allow_all_imports: true
 hass_is_global: true
 
 apps:
-
-  kostal_battery_control:
-    # App specific configurations
-
+  game_of_strom:
+    host: !secret influxdb_host
+    port: !secret influxdb_port
+    username: !secret influxdb_user
+    password: !secret influxdb_pw
+    database: !secret influxdb_database
+    viewer_token: !secret grafana_api_viewer_token
+    writer_token: !secret grafana_api_writer_token
 
 logger:
   default: warning
   logs:
-    custom_components.pyscript.apps.kostal_battery_control: warning
+    custom_components.pyscript.apps.game_of_strom: warning
