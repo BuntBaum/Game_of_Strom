@@ -1,0 +1,13 @@
+- alias: Starte das Scraping vom ISG Web jede 5 Minuten außer um Mitternacht
+  trigger:
+    platform: time_pattern
+    minutes: "/1"
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        before: "23:55:00"
+      - condition: time
+        after: "00:05:00"
+  action:
+    service: multiscrape.trigger_ISG_Web_scraper

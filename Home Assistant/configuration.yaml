@@ -13,3 +13,28 @@ automation: !include automations.yaml
 script: !include_dir_merge_named scripts/
 scene: !include scenes.yaml
 pyscript: !include pyscript/config.yaml
+
+homeassistant:
+  packages: !include_dir_named packages
+
+influxdb:
+  username: !secret influxdb_user
+  password: !secret influxdb_pw
+  tags:
+    source: HA
+  tags_attributes:
+    - friendly_name
+  default_measurement: state
+  exclude:
+    entities:
+      - zone.home
+    domains:
+      - persistent_notification
+      - person
+  include:
+    domains:
+      - sensor
+      - binary_sensor
+      - climate
+    entities:
+      - weather.home
