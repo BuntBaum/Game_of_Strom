@@ -1,0 +1,71 @@
+goe_set_phase:
+  alias: GOE SET PHASE
+  description: Schreibt den Wert in GOE Modbus Register 332
+  fields:
+    phase:
+      name: Phase
+      description: GO-E Phasenumschaltung auswählen
+      required: true
+      default: "1: 1-Phasig"
+      selector:
+        select:
+          options:
+            - "0: Automatisch"
+            - "1: 1-Phasig"
+            - "2: 3-Phasig"
+  sequence:
+    - service: modbus.write_register
+      data:
+        hub: goe_wb
+        address: 332
+        slave: 1
+        value: "{{ phase[0] }}"
+  mode: single
+
+goe_set_state:
+  alias: GOE SET STATE
+  description: Schreibt den Wert in GOE Modbus Register 337
+  fields:
+    state:
+      name: State
+      description: GO-E State auswählen
+      required: true
+      default: "0: Neutral"
+      selector:
+        select:
+          options:
+            - "0: Neutral"
+            - "1: Off"
+            - "2: On"
+  sequence:
+    - service: modbus.write_register
+      data:
+        hub: goe_wb
+        address: 337
+        slave: 1
+        value: "{{ state[0] }}"
+  mode: single
+
+goe_set_ampere:
+  alias: GOE SET AMPERE
+  description: Schreibt den Wert in GOE Modbus Register 299
+  fields:
+    ampere:
+      name: Ampere
+      description: GO-E Ampere auswählen
+      required: true
+      default: 6
+      selector:
+        number:
+          min: 6
+          max: 32
+          step: 1
+          mode: slider
+  sequence:
+    - service: modbus.write_register
+      data:
+        hub: goe_wb
+        address: 299
+        slave: 1
+        value: "{{ ampere }}"
+  mode: single

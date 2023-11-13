@@ -1,0 +1,9 @@
+zoe_reload_integration:
+  alias: ZOE RELOAD INTEGRATION
+  description: Wenn die Integration nicht verfügbar ist und neu geladen werden soll
+  sequence:
+    - service: homeassistant.reload_config_entry
+      data:
+        entry_id: b802b4c2c561763d1885fc05701c882e
+      target:
+        entity_id: sensor.zoe_batteriestand

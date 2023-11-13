@@ -1,0 +1,9 @@
+epex_reload_integration:
+  alias: EPEX RELOAD INTEGRATION
+  description: Wenn die Integration nicht verfügbar ist und neu geladen werden soll
+  sequence:
+    - service: homeassistant.reload_config_entry
+      data:
+        entry_id: 5c400612bf9ebee69d345c2231ef3796
+      target:
+        entity_id: sensor.epex_spot_de_lu_net_price
